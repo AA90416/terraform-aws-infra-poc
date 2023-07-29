@@ -31,7 +31,3 @@ resource "aws_alb_target_group_attachment" "asg_attachment" {
 data "aws_vpc" "selected" {
   default = true
 }
-
-output "dns_name" {
-  value = aws_alb.alb.dns_name
-}
