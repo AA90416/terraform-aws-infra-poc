@@ -1,0 +1,35 @@
+module "vpc" {
+  source  = "./modules/vpc"
+  vpc_cidr = var.vpc_cidr
+  az_count = var.az_count
+}
+
+module "bastion" {
+  source        = "./modules/bastion"
+  subnet_id     = module.vpc.public_subnets[1]
+  ami           = var.bastion_ami
+  instance_type = var.bastion_instance_type
+  storage_size  = var.bastion_storage_size
+}
+
+module "asg" {
+  source          = "./modules/asg"
+  subnets         = module.vpc.private_subnets
+  ami             = var.asg_ami
+  instance_type   = var.asg_instance_type
+  storage_size    = var.asg_storage_size
+  min_instance    = var.asg_min_instance
+  max_instance    = var.asg_max_instance
+}
+
+module "alb" {
+  source        = "./modules/alb"
+  subnets       = module.vpc.private_subnets
+  security_group_ids = [module.bastion.security_group_id]
+}
+
+module "s3" {
+  source       = "./modules/s3"
+  bucket_name  = var.s3_bucket_name
+  lifecycle_rules = var.s3_lifecycle_rules
+}
