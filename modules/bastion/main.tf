@@ -26,7 +26,3 @@ resource "aws_security_group" "http_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-output "public_ip" {
-  value = aws_instance.bastion.public_ip
-}
