@@ -19,9 +19,9 @@ key_name = "dev-key-terraform"
 s3_bucket_name = "your_unique_bucket_name"
 s3_lifecycle_rules = [
   {
-    id      = "images_rule"
-    prefix  = "Images/"
-    status  = "Enabled"
+    id          = "images_rule"
+    prefix      = "Images/"
+    status      = "Enabled"
     tags = {
       Name = "Images Rule"
     }
@@ -31,14 +31,16 @@ s3_lifecycle_rules = [
         storage_class = "GLACIER"
       }
     ]
+    expiration = {}
   },
   {
-    id      = "logs_rule"
-    prefix  = "Logs/"
-    status  = "Enabled"
+    id          = "logs_rule"
+    prefix      = "Logs/"
+    status      = "Enabled"
     tags = {
       Name = "Logs Rule"
     }
+    transitions = []
     expiration = {
       days = 90
     }
