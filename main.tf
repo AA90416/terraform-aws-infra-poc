@@ -9,7 +9,7 @@ module "bastion" {
   subnet_id     = module.vpc.public_subnets[1]
   ami           = var.bastion_ami
   instance_type = var.bastion_instance_type
-  storage_size  = var.bastion_storage_size
+#  storage_size  = var.bastion_storage_size
   key_name      = aws_key_pair.example_keypair.key_name
 }
 
