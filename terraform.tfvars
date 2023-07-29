@@ -46,3 +46,4 @@ s3_lifecycle_rules = [
     }
   }
 ]
+
