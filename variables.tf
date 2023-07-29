@@ -61,7 +61,7 @@ variable "s3_bucket_name" {
 }
 
 variable "s3_lifecycle_rules" {
-  description = "List of lifecycle rules for the S3 bucket"
+  description = "List of S3 bucket lifecycle rules"
   type        = list(map(any))
 }
 
