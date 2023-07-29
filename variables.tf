@@ -65,6 +65,11 @@ variable "s3_lifecycle_rules" {
   type        = list(map(any))
 }
 
+variable "key_name" {
+  description = "Name of the AWS Key Pair to be used for the bastion host"
+  type        = string
+}
+
 
 variable "backend_bucket" {
   description = "Name of the S3 bucket to store Terraform state."
