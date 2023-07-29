@@ -1,26 +1,37 @@
-# modules/vpc/main.tf
-resource "aws_vpc" "my_vpc" {
-  cidr_block = var.vpc_cidr_block
-  enable_dns_hostnames = true
-  enable_dns_support = true
+resource "aws_alb" "alb" {
+  name               = "my-alb"
+  subnets            = var.subnets
+  security_groups    = var.security_group_ids
 }
 
-resource "aws_subnet" "public" {
-  count         = length(var.availability_zones)
-  cidr_block    = cidrsubnet(var.vpc_cidr_block, 8, count.index + 1)
-  availability_zone = element(var.availability_zones, count.index)
+resource "aws_alb_listener" "http_listener" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = 80
+  protocol          = "HTTP"
 
-  tags = {
-    Name = "Public Subnet ${count.index + 1}"
+  default_action {
+    type = "forward"
+    target_group_arn = aws_alb_target_group.asg_target_group.arn
   }
 }
 
-resource "aws_subnet" "private" {
-  count         = length(var.availability_zones)
-  cidr_block    = cidrsubnet(var.vpc_cidr_block, 8, count.index + 11)
-  availability_zone = element(var.availability_zones, count.index)
+resource "aws_alb_target_group" "asg_target_group" {
+  name     = "my-target-group"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = data.aws_vpc.selected.id
+}
 
-  tags = {
-    Name = "Private Subnet ${count.index + 1}"
-  }
+resource "aws_alb_target_group_attachment" "asg_attachment" {
+  target_group_arn = aws_alb_target_group.asg_target_group.arn
+  target_id        = aws_instance.asg.*.id
+  port             = 80
+}
+
+data "aws_vpc" "selected" {
+  default = true
+}
+
+output "dns_name" {
+  value = aws_alb.alb.dns_name
 }

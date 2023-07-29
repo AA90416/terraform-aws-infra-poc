@@ -1,8 +1,10 @@
-resource "aws_s3_bucket" "s3_bucket" {
+resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
+  acl    = "private"
 
+  # Add the following lifecycle configuration
   lifecycle_rule {
-    id      = "images_rule"
+    id      = "glacier_rule"
     status  = "Enabled"
     prefix  = "Images/"
     transition {
@@ -12,15 +14,11 @@ resource "aws_s3_bucket" "s3_bucket" {
   }
 
   lifecycle_rule {
-    id      = "logs_rule"
+    id      = "delete_logs_rule"
     status  = "Enabled"
     prefix  = "Logs/"
     expiration {
       days = 90
     }
   }
-}
-
-output "bucket_arn" {
-  value = aws_s3_bucket.s3_bucket.arn
 }

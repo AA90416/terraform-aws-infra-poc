@@ -10,6 +10,7 @@ module "bastion" {
   ami           = var.bastion_ami
   instance_type = var.bastion_instance_type
   storage_size  = var.bastion_storage_size
+  key_name      = aws_key_pair.example_keypair.key_name
 }
 
 module "asg" {
@@ -20,6 +21,7 @@ module "asg" {
   storage_size    = var.asg_storage_size
   min_instance    = var.asg_min_instance
   max_instance    = var.asg_max_instance
+  key_name        = aws_key_pair.example_keypair.key_name
 }
 
 module "alb" {
