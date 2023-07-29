@@ -25,10 +25,10 @@ variable "bastion_instance_type" {
   type        = string
 }
 
-variable "bastion_storage_size" {
-  description = "Storage size in GB for Bastion host"
-  type        = number
-}
+#variable "bastion_storage_size" {
+#  description = "Storage size in GB for Bastion host"
+#  type        = number
+#}
 
 variable "asg_ami" {
   description = "The AMI ID for the Auto Scaling Group instances"
