@@ -28,12 +28,22 @@ variable "max_instance" {
   type        = number
 }
 
-variable "subnets" {
+variable "vpc_id" {
+  description = "The ID of the VPC"
+}
+
+variable "subnet_ids" {
   description = "List of subnet IDs where ASG instances will be launched"
   type        = list(string)
 }
 
-variable "subnet_cidr_blocks" {
-  type = list(string)
-}
+
+#variable "subnets" {
+#  description = "List of subnet IDs where ASG instances will be launched"
+#  type        = list(string)
+#}
+
+#variable "subnet_cidr_blocks" {
+#  type = list(string)
+#}
 
