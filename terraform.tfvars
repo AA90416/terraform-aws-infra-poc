@@ -1,5 +1,5 @@
 # terraform.tfvars
-
+allowed_ssh_ip = ["24.206.91.93/24"]
 aws_region = "us-east-1"  #"us-east-1"
 vpc_cidr = "10.1.0.0/16"
 az_count = 2
