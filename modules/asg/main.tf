@@ -5,6 +5,18 @@
 #  instance_type = var.instance_type
 #  key_name      = var.key_name
 
+resource "aws_security_group" "asg_sg" {
+  name_prefix = "asg-sg-"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.allowed_ssh_ip] # List your public IP address or range to allow SSH
+  }
+}
+
 resource "aws_launch_configuration" "asg_lc" {
   name_prefix   = "asg-lc"
   image_id      = var.ami
@@ -17,6 +29,7 @@ resource "aws_launch_configuration" "asg_lc" {
               sudo systemctl enable apache2
               sudo systemctl start apache2
               EOF
+  security_groups = [aws_security_group.asg_sg.id] # Associate the security group with the instances
 }
   #user_data = <<-EOF
   #            #!/bin/bash
