@@ -4,7 +4,7 @@ resource "aws_instance" "bastion" {
   subnet_id     = var.subnet_id
   key_name      = var.key_name
   associate_public_ip_address = true
-
+  vpc_security_group_ids = [aws_security_group.bastion.id] 
   tags = {
     Name = "Bastion Host"
   }
