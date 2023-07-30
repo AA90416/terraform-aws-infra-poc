@@ -10,14 +10,22 @@ resource "aws_launch_configuration" "asg_lc" {
   image_id      = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo yum install -y httpd
-              sudo systemctl enable httpd
-              sudo systemctl start httpd
-              EOF
+  user_data     = <<-EOF
+    #!/bin/bash
+    sudo yum update -y
+    sudo yum install -y httpd
+    sudo systemctl enable httpd
+    sudo systemctl start httpd
+  EOF
 }
+  #user_data = <<-EOF
+  #            #!/bin/bash
+  #            sudo yum update -y
+  #            sudo yum install -y httpd
+  #            sudo systemctl enable httpd
+  #            sudo systemctl start httpd
+  #            EOF
+#}
 
 resource "aws_autoscaling_group" "asg" {
   name                 = "my-asg"
