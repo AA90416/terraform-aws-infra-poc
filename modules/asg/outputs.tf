@@ -18,6 +18,10 @@ output "instance_count" {
 }
 
 output "subnet_ids" {
-  description = "The list of subnet IDs where Auto Scaling Group instances are deployed."
-  value       = aws_autoscaling_group.asg.vpc_zone_identifier
+  value = aws_subnet.my_subnets.*.id
 }
+
+#output "subnet_ids" {
+#  description = "The list of subnet IDs where Auto Scaling Group instances are deployed."
+#h  value       = aws_autoscaling_group.asg.vpc_zone_identifier
+#}
