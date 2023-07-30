@@ -10,13 +10,16 @@ resource "aws_launch_configuration" "asg_lc" {
   image_id      = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
-  user_data     = <<-EOF
-    #!/bin/bash
-    sudo yum update -y
-    sudo yum install -y httpd
-    sudo systemctl enable httpd
-    sudo systemctl start httpd
-  EOF
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo apt update
+              sudo apt install -y apache2
+              sudo systemctl enable apache2
+              sudo systemctl start apache2
+              EOF
+  tags = {
+    Name = "WebServer"
+  }
 }
   #user_data = <<-EOF
   #            #!/bin/bash
