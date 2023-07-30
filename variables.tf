@@ -93,8 +93,3 @@ variable "backend_region" {
 variable "backend_dynamodb_table" {
   description = "Name of the DynamoDB table for state locking."
 }
-
-variable "webserver_instance_count" {
-  description = "Number of webserver instances in the Auto Scaling Group"
-  type        = number
-}
