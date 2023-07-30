@@ -41,7 +41,7 @@ resource "aws_instance" "asg" {
 
 resource "aws_alb_target_group_attachment" "asg_attachment" {
   target_group_arn = aws_alb_target_group.asg_target_group.arn
-  target_id        = aws_instance.asg.*.id[count.index]  # Update this line
+  target_id        = aws_instance.asg[count.index].id  # Use count.index here to access instance IDs
 }
 
 resource "aws_alb_listener" "alb_listener" {
