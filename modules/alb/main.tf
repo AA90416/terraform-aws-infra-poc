@@ -9,7 +9,7 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_alb_target_group" "asg_target_group" {
-  name        = "asg-target-group"
+  name        = "alb-target-group"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
