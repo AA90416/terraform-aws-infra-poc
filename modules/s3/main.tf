@@ -7,19 +7,19 @@ resource "aws_s3_bucket" "s3_bucket" {
     id      = "images_rule"
     prefix  = "Images/"
     status  = "Enabled"
-    transitions = [
-      {
-        days          = 90
-        storage_class = "GLACIER"
-      }
-    ]
+
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 
   lifecycle_rule {
     id      = "logs_rule"
     prefix  = "Logs/"
     status  = "Enabled"
-    expiration = {
+
+    expiration {
       days = 90
     }
   }
