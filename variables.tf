@@ -60,10 +60,10 @@ variable "s3_bucket_name" {
   type        = string
 }
 
-variable "s3_lifecycle_rules" {
-  description = "List of S3 bucket lifecycle rules"
-  type        = list(map(any))
-}
+#variable "s3_lifecycle_rules" {
+#  description = "List of S3 bucket lifecycle rules"
+#  type        = list(map(any))
+#}
 
 
 variable "key_name" {
