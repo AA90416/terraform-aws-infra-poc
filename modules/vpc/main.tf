@@ -7,14 +7,28 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "public" {
-  count = var.az_count * 2
+  count = var.az_count
 
   vpc_id     = aws_vpc.main.id
   cidr_block = cidrsubnet(var.vpc_cidr, 8, count.index)
+
   availability_zone = element(data.aws_availability_zones.available.names, count.index)
 
   tags = {
     Name = "Public Subnet ${count.index + 1}"
+  }
+}
+
+resource "aws_subnet" "private" {
+  count = var.az_count
+
+  vpc_id     = aws_vpc.main.id
+  cidr_block = cidrsubnet(var.vpc_cidr, 8, count.index + 4)  # Use count.index + 4 to avoid overlapping with public subnet CIDRs
+
+  availability_zone = element(data.aws_availability_zones.available.names, count.index)
+
+  tags = {
+    Name = "Private Subnet ${count.index + 1}"
   }
 }
 
@@ -40,18 +54,42 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public" {
-  count = var.az_count * 2
+  count = var.az_count
 
   subnet_id      = element(aws_subnet.public.*.id, count.index)
   route_table_id = aws_route_table.public.id
 }
 
-data "aws_availability_zones" "available" {}
+resource "aws_nat_gateway" "nat" {
+  count = var.az_count
 
-output "vpc_id" {
-  value = aws_vpc.main.id
+  allocation_id = aws_eip.nat[count.index].id
+  subnet_id     = element(aws_subnet.public.*.id, count.index)
+
+  tags = {
+    Name = "NAT Gateway ${count.index + 1}"
+  }
 }
 
-output "public_subnets" {
-  value = aws_subnet.public.*.id
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "Private Route Table"
+  }
+}
+
+resource "aws_route" "nat_gateway" {
+  count = var.az_count
+
+  route_table_id         = aws_route_table.private.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.nat[count.index].id
+}
+
+resource "aws_route_table_association" "private" {
+  count = var.az_count
+
+  subnet_id      = element(aws_subnet.private.*.id, count.index)
+  route_table_id = aws_route_table.private.id
 }
