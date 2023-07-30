@@ -27,7 +27,8 @@ module "bastion" {
 module "asg" {
   source          = "./modules/asg"
   vpc_id          = module.vpc.vpc_id
-  subnet_ids     = module.vpc.private_subnets
+#  subnet_ids     = module.vpc.private_subnets
+  private_subnets   = module.vpc.private_subnets
   ami             = var.ami
   instance_type   = var.instance_type
   storage_size    = var.storage_size
