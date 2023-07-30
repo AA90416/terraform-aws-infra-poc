@@ -53,6 +53,6 @@ module "webserver" {
   security_group_ids  = [module.alb.alb_security_group_id]
   webserver_ami       = var.webserver_ami
   webserver_instance_type = var.webserver_instance_type
-  webserver_key_pair  = var.key_name
-  webserver_instance_count = 2  # Example value, adjust as needed
+  webserver_key_pair  = var.webserver_key_pair
+  webserver_instance_count = var.webserver_instance_count  # Example value, adjust as needed
 }
