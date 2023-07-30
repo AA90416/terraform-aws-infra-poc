@@ -2,6 +2,10 @@ output "asg_name" {
   value = aws_autoscaling_group.asg.name
 }
 
+output "instance_count" {
+  value = aws_instance.asg.count
+}
+
 #output "instance_type" {
 #  description = "The instance type used for the Auto Scaling Group."
 #  value       = aws_launch_configuration.asg_lc.instance_type
