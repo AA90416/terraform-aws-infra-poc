@@ -1,28 +1,3 @@
-variable "lifecycle_rules" {
-  type = list(map(any))
-  default = [
-    {
-      id      = "images_rule"
-      prefix  = "Images/"
-      status  = "Enabled"
-      transition = {
-        days          = 90
-        storage_class = "GLACIER"
-      }
-      expiration = {}
-    },
-    {
-      id      = "logs_rule"
-      prefix  = "Logs/"
-      status  = "Enabled"
-      transition = {}
-      expiration = {
-        days = 90
-      }
-    }
-  ]
-}
-
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
   acl    = "private"
