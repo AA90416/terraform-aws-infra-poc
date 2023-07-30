@@ -5,7 +5,6 @@
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
   acl    = "private"
-  region = "us-east-1"
   lifecycle_rule {
     id      = "images_rule"
     prefix  = "Images/"
