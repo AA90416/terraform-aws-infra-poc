@@ -21,6 +21,7 @@ module "bastion" {
   instance_type = var.bastion_instance_type
 #  storage_size  = var.bastion_storage_size
   key_name      = var.key_name 
+  vpc_id      = module.vpc.vpc_id
 }
 
 module "asg" {
