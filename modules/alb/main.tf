@@ -7,10 +7,42 @@ resource "aws_security_group" "alb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    # Allow traffic from specific IPs or ranges as needed
-    cidr_blocks = ["0.0.0.0/0"]
+    // Allow traffic from ALB security group or specific IP ranges
+    security_groups = [aws_security_group.alb_sg.id]
+  }
+
+  // Ingress rule for HTTPS (port 443)
+  ingress {
+    description = "HTTPS Access"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    // Allow traffic from ALB security group or specific IP ranges
+    security_groups = [aws_security_group.alb_sg.id]
+  }
+
+  // Ingress rule for SSH (port 22)
+  ingress {
+    description = "SSH Access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    // Allow traffic from specific IP ranges that need SSH access
+    cidr_blocks = ["YOUR_PUBLIC_IP/32"]  # Replace with your public IP address
   }
 }
+
+
+
+#  ingress {
+#    description = "HTTP Access"
+#    from_port   = 80
+#    to_port     = 80
+#    protocol    = "tcp"
+#    # Allow traffic from specific IPs or ranges as needed
+#    cidr_blocks = ["0.0.0.0/0"]
+#  }
+#}
 
 resource "aws_alb" "alb" {
   name            = "my-alb"
