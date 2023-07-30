@@ -27,7 +27,7 @@ resource "aws_alb_target_group" "asg_target_group" {
   port        = 80
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
-#  target_type = "instance"
+  target_type = "instance"
 }
 
 resource "aws_instance" "asg" {
@@ -37,6 +37,11 @@ resource "aws_instance" "asg" {
   count         = var.instance_count
   subnet_id     = var.subnet_id
   # Other instance configuration as needed
+}
+
+resource "aws_autoscaling_attachment" "asg_attachment" {
+  autoscaling_group_name = module.asg.autoscaling_group_name
+  alb_target_group_arn   = aws_alb_target_group.alb_target_group.arn
 }
 
 resource "aws_alb_target_group_attachment" "asg_attachment" {
