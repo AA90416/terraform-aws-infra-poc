@@ -1,6 +1,6 @@
-# modules/webserver/main.tf
 resource "aws_security_group" "webserver_sg" {
   name_prefix = "webserver-sg"
+
   ingress {
     description = "HTTP from anywhere"
     from_port   = 80
@@ -41,5 +41,5 @@ resource "aws_autoscaling_group" "webserver_asg" {
   min_size             = var.webserver_instance_count
   max_size             = var.webserver_instance_count
   desired_capacity     = var.webserver_instance_count
-  vpc_zone_identifier  = module.vpc.private_subnets # Use private subnets for ASG
+  vpc_zone_identifier  = var.subnets
 }
