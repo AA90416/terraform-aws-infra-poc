@@ -1,17 +1,3 @@
-resource "aws_security_group" "alb_sg" {
-  name_prefix = "alb-sg-"
-
-  # Security group rules for allowing traffic on port 80 (HTTP)
-  ingress {
-    description = "HTTP Access"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    # Allow traffic from specific IPs or ranges as needed
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 resource "aws_alb" "alb" {
   name            = "my-alb"
   security_groups = [aws_security_group.alb_sg.id]
