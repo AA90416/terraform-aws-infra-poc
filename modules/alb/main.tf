@@ -35,7 +35,6 @@ resource "aws_alb_target_group_attachment" "asg_attachment" {
   target_id        = aws_instance.asg.*.id[count.index]  # Update this line
 }
 
-
 resource "aws_alb_listener" "alb_listener" {
   load_balancer_arn = aws_alb.alb.arn
   port              = "80"
@@ -45,4 +44,6 @@ resource "aws_alb_listener" "alb_listener" {
     target_group_arn = aws_alb_target_group.asg_target_group.arn
     type             = "forward"
   }
+}
+
 }
