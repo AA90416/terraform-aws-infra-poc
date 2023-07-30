@@ -1,6 +1,6 @@
 # terraform.tfvars
 
-aws_region = "us-east-1"
+aws_region = "sa-east-1"  #"us-east-1"
 vpc_cidr = "10.1.0.0/16"
 az_count = 2
 bastion_ami = "ami-026ebd4cfe2c043b2"
