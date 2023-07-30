@@ -30,22 +30,6 @@ resource "aws_alb_target_group" "asg_target_group" {
   target_type = "instance"
 }
 
-resource "aws_instance" "asg" {
-  # Configure the AWS instance as needed
-  instance_type = var.asg_instance_type
-  ami           = var.asg_ami
-  count         = var.instance_count
-  subnet_id     = var.subnet_id
-  # Other instance configuration as needed
-}
-
-resource "aws_alb_target_group_attachment" "asg_attachment" {
-  count            = var.instance_count
-  target_group_arn = aws_alb_target_group.asg_target_group.arn
-  target_id        = aws_instance.asg[count.index].id
-  port             = 80
-}
-
 resource "aws_alb_listener" "alb_listener" {
   load_balancer_arn = aws_alb.alb.arn
   port              = "80"
