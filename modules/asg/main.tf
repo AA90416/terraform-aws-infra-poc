@@ -1,3 +1,18 @@
+variable "vpc_id" {
+  description = "The ID of the VPC"
+}
+
+variable "subnet_ids" {
+  description = "List of subnet IDs where ASG instances will be launched"
+  type        = list(string)
+}
+
+variable "instance_count" {
+  description = "Number of instances to launch in the ASG"
+  type        = number
+  default     = 1
+}
+
 resource "aws_launch_configuration" "asg_lc" {
   name_prefix   = "asg-lc-"
   image_id      = var.ami
@@ -16,21 +31,10 @@ resource "aws_launch_configuration" "asg_lc" {
 resource "aws_autoscaling_group" "asg" {
   name                 = "my-asg"
   launch_configuration = aws_launch_configuration.asg_lc.name
-  min_size             = var.min_instance
-  max_size             = var.max_instance
-  desired_capacity     = var.min_instance
-  vpc_zone_identifier  = var.subnets
+  min_size             = var.instance_count
+  max_size             = var.instance_count
+  desired_capacity     = var.instance_count
+  vpc_zone_identifier  = var.subnet_ids
+
+  # Other ASG configuration as needed
 }
-
-resource "aws_subnet" "my_subnets" {
-  count = var.subnet_count
-
-  dynamic "subnet" {
-    for_each = var.subnet_cidr_blocks
-    content {
-      vpc_id     = var.vpc_id
-      cidr_block = subnet.value
-    }
-  }
-}
-
