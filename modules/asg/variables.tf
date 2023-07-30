@@ -37,7 +37,11 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-
+variable "instance_count" {
+  description = "Number of instances to launch in the ASG"
+  type        = number
+  default     = 1
+}
 #variable "subnets" {
 #  description = "List of subnet IDs where ASG instances will be launched"
 #  type        = list(string)
