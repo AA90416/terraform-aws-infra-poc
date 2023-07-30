@@ -4,6 +4,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "allowed_ssh_ip" {
+  description = "List of public IP addresses or ranges to allow SSH"
+  type        = list(string)
+  default     = ["your_public_ip_address_or_range"]
+}
+
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
