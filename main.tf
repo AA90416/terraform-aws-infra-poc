@@ -25,7 +25,7 @@ module "bastion" {
 
 module "asg" {
   source          = "./modules/asg"
-  vpc_id          = module.vpc.vpc_id
+  vpc_id          = module.vpc.aws_vpc.main.id  #module.vpc.vpc_id
   subnet_ids     = module.vpc.private_subnets
   ami             = var.ami
   instance_type   = var.instance_type
@@ -39,7 +39,7 @@ module "asg" {
 
 module "alb" {
   source            = "./modules/alb"
-  vpc_id            = module.vpc.vpc_id
+  vpc_id            = module.vpc.aws_vpc.main.id #module.vpc.vpc_id
   subnets           = module.vpc.private_subnets
   security_group_ids = [module.bastion.security_group_id]
 }
