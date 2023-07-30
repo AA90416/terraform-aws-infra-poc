@@ -55,8 +55,6 @@ resource "aws_s3_bucket" "s3_bucket" {
     }
   }
 }
-Now the default value for the "lifecycle_rules" variable should be compatible with the list of maps type, and the error should be resolved.
-
 
 
 
