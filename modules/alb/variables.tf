@@ -13,3 +13,8 @@ variable "subnets" {
   description = "List of subnet IDs where the ALB will be deployed."
   type        = list(string)
 }
+
+variable "private_subnets" {
+  description = "List of private subnet IDs for the ALB"
+  type        = list(string)
+}
