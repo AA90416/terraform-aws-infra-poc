@@ -35,7 +35,6 @@ module "asg" {
   max_instance    = var.max_instance
   key_name        = var.key_name 
   instance_count    = var.instance_count
-  alb_security_group_id = aws_security_group.alb_sg.id
 }
 
 
