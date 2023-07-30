@@ -94,21 +94,6 @@ variable "backend_dynamodb_table" {
   description = "Name of the DynamoDB table for state locking."
 }
 
-variable "webserver_ami" {
-  description = "The AMI ID for the webserver instances"
-  type        = string
-}
-
-variable "webserver_instance_type" {
-  description = "Instance type for webserver instances"
-  type        = string
-}
-
-variable "webserver_key_pair" {
-  description = "Name of the AWS Key Pair to be used for instances in the ASG"
-  type        = string
-}
-
 variable "webserver_instance_count" {
   description = "Number of webserver instances in the Auto Scaling Group"
   type        = number
