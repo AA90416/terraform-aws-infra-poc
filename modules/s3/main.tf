@@ -1,21 +1,25 @@
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
+  acl    = "private"
 
+  # Lifecycle rules for S3 bucket
   lifecycle_rule {
     id      = "images_rule"
-    status  = "Enabled"
     prefix  = "Images/"
-    transition {
-      days          = 90
-      storage_class = "GLACIER"
-    }
+    status  = "Enabled"
+    transitions = [
+      {
+        days          = 90
+        storage_class = "GLACIER"
+      }
+    ]
   }
 
   lifecycle_rule {
     id      = "logs_rule"
-    status  = "Enabled"
     prefix  = "Logs/"
-    expiration {
+    status  = "Enabled"
+    expiration = {
       days = 90
     }
   }
