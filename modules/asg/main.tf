@@ -4,6 +4,7 @@ resource "aws_launch_configuration" "asg_lc" {
   instance_type = var.instance_type
   security_groups = [aws_security_group.http_ssh.id]
   key_name      = var.key_name
+
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
