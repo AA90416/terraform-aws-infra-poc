@@ -22,6 +22,6 @@ backend_key             = "terraform.tfstate"           # Replace with a desired
 backend_region          = "us-east-1"                   # Replace with your desired AWS region
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 key_name = "terraform-dev"
-bucket_name = "aws-terraform-poc"
+bucket_name = "aws-terraform-poc-12234558373"
 
 
