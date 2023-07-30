@@ -3,30 +3,21 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "lifecycle_rules" {
-  type = list(map(any))
-  default = [
-    {
-      id      = "images_rule"
-      prefix  = "Images/"
-      status  = "Enabled"
-      transition = {
-        days          = 90
-        storage_class = "GLACIER"
-      }
-      expiration = {}
-    },
-    {
-      id      = "logs_rule"
-      prefix  = "Logs/"
-      status  = "Enabled"
-      transition = {}
-      expiration = {
-        days = 90
-      }
-    }
-  ]
-}
 
+variable "lifecycle_rules" {
+  type = list(object({
+    id       = string
+    prefix   = string
+    status   = string
+    transition = optional(object({
+      days          = number
+      storage_class = string
+    }))
+    expiration = optional(object({
+      days = number
+    }))
+  }))
+  default = []
+}
 
 
