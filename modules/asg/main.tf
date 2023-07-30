@@ -17,9 +17,6 @@ resource "aws_launch_configuration" "asg_lc" {
               sudo systemctl enable apache2
               sudo systemctl start apache2
               EOF
-  tags = {
-    Name = "WebServer"
-  }
 }
   #user_data = <<-EOF
   #            #!/bin/bash
