@@ -37,27 +37,27 @@ variable "bastion_storage_size" {
   type        = number
 }
 
-variable "asg_ami" {
+variable "ami" {
   description = "AMI ID for the Auto Scaling Group instances"
   type        = string
 }
 
-variable "asg_instance_type" {
+variable "instance_type" {
   description = "Instance type for Auto Scaling Group instances"
   type        = string
 }
 
-variable "asg_storage_size" {
+variable "storage_size" {
   description = "Storage size in GB for Auto Scaling Group instances"
   type        = number
 }
 
-variable "asg_min_instance" {
+variable "min_instance" {
   description = "Minimum number of instances for the ASG"
   type        = number
 }
 
-variable "asg_max_instance" {
+variable "max_instance" {
   description = "Maximum number of instances for the ASG"
   type        = number
 }
