@@ -17,24 +17,5 @@ backend_region          = "us-east-1"                   # Replace with your desi
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 key_name = "dev-key-terraform"
 bucket_name = "your_unique_bucket_name"
-s3_lifecycle_rules = [
-  {
-    id            = "images_rule"
-    prefix        = "Images/"
-    status        = "Enabled"
-    transition = {
-      days          = 90
-      storage_class = "GLACIER"
-    }
-  },
-  {
-    id            = "logs_rule"
-    prefix        = "Logs/"
-    status        = "Enabled"
-    transition = {
-      days = 0 # You can set this to 0 if you don't want any transition for the "logs_rule"
-    }
-  }
-]
 
 
