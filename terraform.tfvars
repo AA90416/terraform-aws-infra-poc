@@ -6,7 +6,7 @@ az_count = 2
 bastion_ami = "ami-053b0d53c279acc90"
 bastion_instance_type = "t2.micro"
 bastion_storage_size = 20
-ami = "ami-a8d369c0"
+ami = "ami-053b0d53c279acc90"
 instance_type = "t2.small"
 storage_size = 20
 min_instance = 1
@@ -21,7 +21,7 @@ backend_bucket          = "your-terraform-state-bucket"  # Replace with your uni
 backend_key             = "terraform.tfstate"           # Replace with a desired name for the Terraform state file
 backend_region          = "us-east-1"                   # Replace with your desired AWS region
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
-key_name = "terraform-dev"
+key_name = "poc-test"
 bucket_name = "aws-terraform-poc-12234558373"
 
 
