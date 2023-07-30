@@ -23,7 +23,7 @@ resource "aws_autoscaling_group" "asg" {
   name                 = "my-asg"
   launch_configuration = aws_launch_configuration.asg_lc.name
   min_size             = var.min_instance
-  max_size             = var.man_instance
+  max_size             = var.max_instance
   desired_capacity     = var.instance_count
   vpc_zone_identifier  = var.subnet_ids
 
