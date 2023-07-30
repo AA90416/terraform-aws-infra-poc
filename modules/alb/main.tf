@@ -16,7 +16,7 @@ resource "aws_alb" "alb" {
   name            = "my-alb"
   security_groups = [aws_security_group.alb_sg.id]
   #subnets         =   var.subnets
-  subnet_ids     = var.private_subnets
+  subnets     = var.private_subnets
   load_balancer_type = "application"
   tags = {
     Name = "ALB"
