@@ -1,7 +1,10 @@
 # modules/s3/main.tf
 
-resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle" {
-  rule {
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket = var.bucket_name
+  acl    = "private"
+
+  lifecycle_rule {
     id      = "images_rule"
     status  = "Enabled"
     filter {
@@ -14,7 +17,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle" {
     }
   }
 
-  rule {
+  lifecycle_rule {
     id      = "logs_rule"
     status  = "Enabled"
     filter {
@@ -25,9 +28,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle" {
       days = 90
     }
   }
-
-  bucket = var.bucket_name
 }
+
 
 
 #resource "aws_s3_bucket" "s3_bucket" {
