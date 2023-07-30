@@ -1,8 +1,3 @@
-variable "key_name" {
-  description = "Name of the AWS Key Pair to be used for the bastion host"
-  type        = string
-}
-
 variable "ami" {
   description = "The AMI ID for the Bastion host"
   type        = string
@@ -15,5 +10,10 @@ variable "instance_type" {
 
 variable "subnet_id" {
   description = "ID of the subnet in which the Bastion host will be launched"
+  type        = string
+}
+
+variable "key_name" {
+  description = "Name of the AWS Key Pair to be used for the bastion host"
   type        = string
 }
