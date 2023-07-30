@@ -4,10 +4,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "private_subnets" {
-  description = "List of private subnet IDs for the ALB"
-  type        = list(string)
-}
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
