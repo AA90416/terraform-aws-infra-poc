@@ -12,10 +12,10 @@ output "ami" {
   value       = aws_launch_configuration.asg_lc.image_id
 }
 
-output "instance_count" {
-  description = "The number of instances in the Auto Scaling Group."
-  value       = length(aws_autoscaling_group.asg)
-}
+#output "instance_count" {
+#  description = "The number of instances in the Auto Scaling Group."
+#  value       = length(aws_autoscaling_group.asg)
+#}
 
 output "subnet_ids" {
   value = aws_subnet.my_subnets.*.id
