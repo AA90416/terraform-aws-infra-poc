@@ -3,7 +3,7 @@
 aws_region = "us-east-1"  #"us-east-1"
 vpc_cidr = "10.1.0.0/16"
 az_count = 2
-bastion_ami = "ami-a8d369c0"
+bastion_ami = "ami-053b0d53c279acc90"
 bastion_instance_type = "t2.micro"
 bastion_storage_size = 20
 ami = "ami-a8d369c0"
@@ -12,7 +12,7 @@ storage_size = 20
 min_instance = 1
 max_instance = 2 
 instance_count = 1
-#asg_ami = "ami-0fc522222ab74a244"
+#asg_ami = "ami-053b0d53c279acc90"
 #asg_instance_type = "t2.micro"
 #asg_storage_size = 20
 #asg_min_instance = 2
