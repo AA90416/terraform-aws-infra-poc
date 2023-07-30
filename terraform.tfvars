@@ -17,7 +17,3 @@ backend_region          = "us-east-1"                   # Replace with your desi
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 key_name = "dev-key-terraform"
 s3_bucket_name = "your_unique_bucket_name"
-webserver_ami = "ami-026ebd4cfe2c043b2"
-webserver_instance_type = "t2.micro"
-webserver_instance_count = 2
-webserver_key_pair = "dev-key-terraform"
