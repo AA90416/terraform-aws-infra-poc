@@ -54,7 +54,7 @@ module "alb" {
 
 module "s3" {
   source          = "./modules/s3"
-  bucket_name     = "your_bucket_name"
+  bucket_name     = var.bucket_name
   lifecycle_rules = [
     {
       id      = "images_rule"
