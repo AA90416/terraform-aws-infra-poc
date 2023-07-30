@@ -1,6 +1,6 @@
 resource "aws_security_group" "alb_sg" {
   name_prefix = "alb-sg-"
-
+  vpc_id = aws_vpc.main.id  # Use the VPC ID of the same VPC as the ALB
   # Security group rules for allowing traffic on port 80 (HTTP)
   ingress {
     description = "HTTP Access"
