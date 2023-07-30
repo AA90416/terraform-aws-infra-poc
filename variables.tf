@@ -42,6 +42,11 @@ variable "ami" {
   type        = string
 }
 
+variable "instance_count" {
+  type    = number
+  default = 2  # Set your desired default instance count here
+}
+
 variable "instance_type" {
   description = "Instance type for Auto Scaling Group instances"
   type        = string
