@@ -32,3 +32,8 @@ variable "subnets" {
   description = "List of subnet IDs where ASG instances will be launched"
   type        = list(string)
 }
+
+variable "subnet_cidr_blocks" {
+  type = list(string)
+}
+
