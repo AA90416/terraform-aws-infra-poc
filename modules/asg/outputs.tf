@@ -14,7 +14,7 @@ output "ami" {
 
 output "instance_count" {
   description = "The number of instances in the Auto Scaling Group."
-  value       = length(aws_autoscaling_group.asg
+  value       = length(aws_autoscaling_group.asg)
 }
 
 output "subnet_ids" {
