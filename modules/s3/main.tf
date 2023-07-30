@@ -2,25 +2,25 @@ resource "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
   acl    = "private"
 
-  for_each = { for idx, rule in var.lifecycle_rules : idx => rule }
+  dynamic "lifecycle_rule" {
+    for_each = var.lifecycle_rules
+    content {
+      id      = lifecycle_rule.value.id
+      prefix  = lifecycle_rule.value.prefix
 
-  lifecycle_rule {
-    id     = each.value.id
-    prefix = each.value.prefix
-    status = each.value.status
-
-    dynamic "transition" {
-      for_each = can(each.value.transition) ? [1] : []
-      content {
-        days          = each.value.transition.days
-        storage_class = each.value.transition.storage_class
+      dynamic "transition" {
+        for_each = can(lifecycle_rule.value.transition) ? [lifecycle_rule.value.transition] : []
+        content {
+          days          = transition.value.days
+          storage_class = transition.value.storage_class
+        }
       }
-    }
 
-    dynamic "expiration" {
-      for_each = can(each.value.expiration) ? [1] : []
-      content {
-        days = each.value.expiration.days
+      dynamic "expiration" {
+        for_each = can(lifecycle_rule.value.expiration) ? [lifecycle_rule.value.expiration] : []
+        content {
+          days = expiration.value.days
+        }
       }
     }
   }
