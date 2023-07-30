@@ -10,7 +10,7 @@ resource "aws_launch_configuration" "asg_lc" {
   image_id      = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
-  security_groups = [aws_security_group.asg_sg.id]
+  security_groups = [aws_security_group.asg_sg.id] 
   user_data     = <<-EOF
     #!/bin/bash
     sudo yum update -y
