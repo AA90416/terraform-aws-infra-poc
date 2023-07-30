@@ -4,6 +4,13 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "s3_lifecycle_rules" {
+  description = "List of S3 bucket lifecycle rules"
+  type        = list(map(any))
+  default     = []
+}
+
+
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
