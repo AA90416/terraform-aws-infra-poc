@@ -65,10 +65,6 @@ variable "s3_lifecycle_rules" {
   type        = list(map(any))
 }
 
-variable "public_key_path" {
-  description = "Path to the public key used for AWS Key Pair"
-  type        = string
-}
 
 variable "key_name" {
   description = "Name of the AWS Key Pair to be used for instances"
