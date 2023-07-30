@@ -20,7 +20,7 @@ module "bastion" {
   ami           = var.bastion_ami
   instance_type = var.bastion_instance_type
 #  storage_size  = var.bastion_storage_size
-  key_name      = var.key_name #aws_key_pair.example_keypair.key_name
+  key_name      = var.key_name 
 }
 
 module "asg" {
@@ -31,7 +31,7 @@ module "asg" {
   storage_size    = var.asg_storage_size
   min_instance    = var.asg_min_instance
   max_instance    = var.asg_max_instance
-  key_name        = var.key_name #aws_key_pair.example_keypair.key_name
+  key_name        = var.key_name 
 }
 
 module "alb" {
@@ -45,14 +45,4 @@ module "s3" {
   source       = "./modules/s3"
   bucket_name  = var.s3_bucket_name
   lifecycle_rules = var.s3_lifecycle_rules
-}
-
-module "webserver" {
-  source              = "./modules/webserver"
-  subnets             = module.vpc.private_subnets
-  security_group_ids  = [module.alb.alb_security_group_id]
-  webserver_ami       = var.webserver_ami
-  webserver_instance_type = var.webserver_instance_type
-  webserver_key_pair  = var.webserver_key_pair
-  webserver_instance_count = var.webserver_instance_count  # Example value, adjust as needed
 }
