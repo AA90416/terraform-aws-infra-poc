@@ -3,7 +3,3 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "lifecycle_rules" {
-  description = "List of lifecycle rules for the S3 bucket"
-  type        = list(map(any))
-}
