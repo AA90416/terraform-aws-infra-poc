@@ -30,14 +30,14 @@ resource "aws_alb_target_group" "asg_target_group" {
   target_type = "instance"
 }
 
-#resource "aws_instance" "asg" {
-#  # Configure the AWS instance as needed
-#  instance_type = var.asg_instance_type
-#  ami           = var.asg_ami
-#  count         = var.instance_count
-#  subnet_id     = var.subnet_id
+resource "aws_instance" "asg" {
+  # Configure the AWS instance as needed
+  instance_type = var.asg_instance_type
+  ami           = var.asg_ami
+  count         = var.instance_count
+  subnet_id     = var.subnet_id
   # Other instance configuration as needed
-#}
+}
 
 resource "aws_alb_target_group_attachment" "asg_attachment" {
   target_group_arn = aws_alb_target_group.asg_target_group.arn
