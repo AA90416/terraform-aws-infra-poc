@@ -51,3 +51,8 @@ variable "instance_count" {
 #  type = list(string)
 #}
 
+variable "allowed_ssh_ip" {
+  description = "List your public IP address or range to allow SSH"
+  type        = list(string)
+  default     = ["your_public_ip_address_or_range"]
+}
