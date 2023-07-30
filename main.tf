@@ -57,4 +57,21 @@ module "alb" {
 module "s3" {
   source          = "./modules/s3"
   bucket_name     = "your_bucket_name"
+  lifecycle_rules = [
+    {
+      id      = "images_rule"
+      prefix  = "Images/"
+      transition = {
+        days          = 90
+        storage_class = "GLACIER"
+      }
+    },
+    {
+      id      = "logs_rule"
+      prefix  = "Logs/"
+      expiration = {
+        days = 90
+      }
+    }
+  ]
 }
