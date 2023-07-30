@@ -5,13 +5,10 @@
 #  instance_type = var.instance_type
 #  key_name      = var.key_name
 
-resource "aws_instance" "asg" {
-  # Configure the AWS instance as needed
+resource "aws_launch_configuration" "asg_lc" {
   name_prefix   = "asg-lc-"
+  image_id      = var.ami
   instance_type = var.instance_type
-  ami           = var.ami
-  count         = var.instance_count
-  subnet_id     = var.subnet_id
   key_name      = var.key_name
   user_data = <<-EOF
               #!/bin/bash
