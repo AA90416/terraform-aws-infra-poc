@@ -1,5 +1,5 @@
 resource "aws_security_group" "alb_sg" {
-  name_prefix = "alb-sg-"
+  name_prefix = "alb-sg"
   vpc_id      = var.vpc_id # Use the VPC ID of the same VPC as the ALB
   # Security group rules for allowing traffic on port 80 (HTTP)
   ingress {
@@ -8,7 +8,6 @@ resource "aws_security_group" "alb_sg" {
     to_port     = 80
     protocol    = "tcp"
     // Allow traffic from ALB security group or specific IP ranges
-    security_groups = [aws_security_group.alb_sg.id]
   }
 
   // Ingress rule for HTTPS (port 443)
@@ -18,7 +17,6 @@ resource "aws_security_group" "alb_sg" {
     to_port     = 443
     protocol    = "tcp"
     // Allow traffic from ALB security group or specific IP ranges
-    security_groups = [aws_security_group.alb_sg.id]
   } 
 
   // Ingress rule for SSH (port 22)
