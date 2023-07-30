@@ -61,6 +61,7 @@ module "s3" {
     {
       id      = "images_rule"
       prefix  = "Images/"
+      status  = "Enabled"
       transition = {
         days          = 90
         storage_class = "GLACIER"
@@ -69,6 +70,7 @@ module "s3" {
     {
       id      = "logs_rule"
       prefix  = "Logs/"
+      status  = "Enabled"
       expiration = {
         days = 90
       }
