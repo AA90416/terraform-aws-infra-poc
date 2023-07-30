@@ -2,8 +2,8 @@ resource "aws_instance" "bastion" {
   ami           = var.ami
   instance_type = var.instance_type
   subnet_id     = var.subnet_id
-  security_groups = [aws_security_group.http_ssh.id]
   key_name      = var.key_name
+
   tags = {
     Name = "Bastion Host"
   }
@@ -11,7 +11,7 @@ resource "aws_instance" "bastion" {
 
 resource "aws_security_group" "http_ssh" {
   name_prefix = "http-ssh-sg-"
-  
+
   ingress {
     from_port   = 22
     to_port     = 22
