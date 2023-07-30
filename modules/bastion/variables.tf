@@ -3,6 +3,11 @@ variable "ami" {
   type        = string
 }
 
+variable "vpc_id" {
+  description = "ID of the VPC"
+  type        = string
+}
+
 variable "instance_type" {
   description = "Instance type for Bastion host"
   type        = string
