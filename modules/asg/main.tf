@@ -6,7 +6,7 @@
 #  key_name      = var.key_name
 
 resource "aws_launch_configuration" "asg_lc" {
-  name_prefix   = "asg-lc-"
+  name_prefix   = "asg-lc"
   image_id      = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
