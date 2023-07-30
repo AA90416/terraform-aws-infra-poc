@@ -1,17 +1,3 @@
-variable "vpc_id" {
-  description = "The ID of the VPC"
-}
-
-variable "subnet_ids" {
-  description = "List of subnet IDs where ASG instances will be launched"
-  type        = list(string)
-}
-
-variable "instance_count" {
-  description = "Number of instances to launch in the ASG"
-  type        = number
-  default     = 1
-}
 
 resource "aws_launch_configuration" "asg_lc" {
   name_prefix   = "asg-lc-"
