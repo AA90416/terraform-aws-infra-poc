@@ -21,3 +21,16 @@ resource "aws_autoscaling_group" "asg" {
   desired_capacity     = var.min_instance
   vpc_zone_identifier  = var.subnets
 }
+
+resource "aws_subnet" "my_subnets" {
+  count = var.subnet_count
+
+  dynamic "subnet" {
+    for_each = var.subnet_cidr_blocks
+    content {
+      vpc_id     = var.vpc_id
+      cidr_block = subnet.value
+    }
+  }
+}
+
