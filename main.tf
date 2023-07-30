@@ -50,7 +50,7 @@ module "s3" {
 module "webserver" {
   source              = "./modules/webserver"
   subnets             = module.vpc.private_subnets
-  security_group_ids  = [module.alb.alb_security_group_id]]
+  security_group_ids  = [module.alb.alb_security_group_id]
   webserver_ami       = var.webserver_ami
   webserver_instance_type = var.webserver_instance_type
   webserver_key_pair  = var.key_name
