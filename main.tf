@@ -55,7 +55,6 @@ module "alb" {
 module "s3" {
   source          = "./modules/s3"
   bucket_name     = var.bucket_name
-  region          = var.aws_region
   lifecycle_rules = [
     {
       id      = "images_rule"
