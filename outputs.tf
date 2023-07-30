@@ -13,3 +13,7 @@ output "s3_bucket_arn" {
 output "webserver_public_ips" {
   value = module.webserver.webserver_public_ips
 }
+
+output "alb_security_group_id" {
+  value = aws_security_group.alb_sg.id
+}
