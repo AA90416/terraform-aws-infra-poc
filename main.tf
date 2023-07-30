@@ -33,6 +33,7 @@ module "asg" {
   min_instance    = var.asg_min_instance
   max_instance    = var.asg_max_instance
   key_name        = var.key_name 
+  instance_count    = module.asg.instance_count
 }
 
 
@@ -41,10 +42,6 @@ module "alb" {
   vpc_id            = module.vpc.vpc_id
   subnets           = module.vpc.private_subnets
   security_group_ids = [module.bastion.security_group_id]
-  asg_instance_type = module.asg.instance_type
-  asg_ami           = module.asg.ami
-  instance_count    = module.asg.instance_count
-  subnet_id         = module.asg.subnet_ids[0]  # Choose a specific subnet ID for the ALB
 }
 
 
