@@ -42,7 +42,7 @@ module "alb" {
   asg_instance_type = module.asg.instance_type
   asg_ami           = module.asg.ami
   instance_count    = module.asg.instance_count
-  subnet_id        = module.asg.subnet_id
+  subnet_ids        = module.asg.subnet_ids
 }
 
 
