@@ -34,6 +34,7 @@ module "asg" {
   key_name        = var.key_name 
 }
 
+
 module "alb" {
   source            = "./modules/alb"
   vpc_id            = module.vpc.vpc_id
@@ -42,7 +43,7 @@ module "alb" {
   asg_instance_type = module.asg.instance_type
   asg_ami           = module.asg.ami
   instance_count    = module.asg.instance_count
-  subnet_ids        = module.asg.subnet_ids
+  subnet_id         = module.asg.subnet_ids[0]  # Choose a specific subnet ID for the ALB
 }
 
 
