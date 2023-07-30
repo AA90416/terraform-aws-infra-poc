@@ -4,7 +4,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle" {
   rule {
     id      = "images_rule"
     status  = "Enabled"
-    prefix  = "Images/"
+    filter {
+      prefix  = "Images/"
+    }
 
     transition {
       days          = 90
@@ -15,7 +17,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle" {
   rule {
     id      = "logs_rule"
     status  = "Enabled"
-    prefix  = "Logs/"
+    filter {
+      prefix  = "Logs/"
+    }
 
     expiration {
       days = 90
