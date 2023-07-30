@@ -35,3 +35,13 @@ module "s3" {
   bucket_name  = var.s3_bucket_name
   lifecycle_rules = var.s3_lifecycle_rules
 }
+
+module "webserver" {
+  source              = "./modules/webserver"
+  subnets             = module.vpc.private_subnets
+  security_group_ids  = [module.alb.security_group_id]
+  webserver_ami       = var.webserver_ami
+  webserver_instance_type = var.webserver_instance_type
+  webserver_key_pair  = var.key_name
+  webserver_instance_count = 2  # Example value, adjust as needed
+}
