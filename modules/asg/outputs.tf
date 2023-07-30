@@ -7,19 +7,16 @@ output "instance_type" {
   value       = aws_launch_configuration.asg_lc.instance_type
 }
 
-output "ami" {
-  description = "The AMI ID used for the Auto Scaling Group instances."
-  value       = aws_launch_configuration.asg_lc.image_id
-}
+#output "ami" {
+#  description = "The AMI ID used for the Auto Scaling Group instances."
+#  value       = aws_launch_configuration.asg_lc.image_id
+#}
 
 #output "instance_count" {
 #  description = "The number of instances in the Auto Scaling Group."
 #  value       = length(aws_autoscaling_group.asg)
 #}
 
-output "subnet_ids" {
-  value = aws_subnet.my_subnets.*.id
-}
 
 #output "subnet_ids" {
 #  description = "The list of subnet IDs where Auto Scaling Group instances are deployed."
