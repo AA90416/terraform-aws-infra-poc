@@ -27,11 +27,11 @@ module "asg" {
   source          = "./modules/asg"
   vpc_id          = module.vpc.vpc_id
   subnet_ids     = module.vpc.private_subnets
-  ami             = var.asg_ami
-  instance_type   = var.asg_instance_type
-  storage_size    = var.asg_storage_size
-  min_instance    = var.asg_min_instance
-  max_instance    = var.asg_max_instance
+  ami             = var.ami
+  instance_type   = var.instance_type
+  storage_size    = var.storage_size
+  min_instance    = var.min_instance
+  max_instance    = var.max_instance
   key_name        = var.key_name 
   instance_count    = module.asg.instance_count
 }
