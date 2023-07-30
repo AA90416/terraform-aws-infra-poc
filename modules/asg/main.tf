@@ -13,7 +13,7 @@ resource "aws_security_group" "asg_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.allowed_ssh_ip] # List your public IP address or range to allow SSH
+    cidr_blocks = var.allowed_ssh_ip # List your public IP address or range to allow SSH
   }
 }
 
