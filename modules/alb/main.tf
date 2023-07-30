@@ -1,3 +1,17 @@
+resource "aws_security_group" "alb_sg" {
+  name_prefix = "alb-sg-"
+
+  # Security group rules for allowing traffic on port 80 (HTTP)
+  ingress {
+    description = "HTTP Access"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    # Allow traffic from specific IPs or ranges as needed
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_alb" "alb" {
   name            = "my-alb"
   security_groups = [aws_security_group.alb_sg.id]
@@ -14,6 +28,15 @@ resource "aws_alb_target_group" "asg_target_group" {
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "instance"
+}
+
+resource "aws_instance" "asg" {
+  # Configure the AWS instance as needed
+  instance_type = var.asg_instance_type
+  ami           = var.asg_ami
+  count         = var.instance_count
+  subnet_id     = var.subnet_id
+  # Other instance configuration as needed
 }
 
 resource "aws_alb_target_group_attachment" "asg_attachment" {
