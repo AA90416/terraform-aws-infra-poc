@@ -5,12 +5,11 @@ variable "security_group_ids" {
 }
 
 variable "vpc_id" {
-  description = "VPC ID for the ALB"
+  description = "The ID of the VPC where the ALB will be created."
   type        = string
 }
 
-
-variable "subnet_id" {
-  description = "ID of the subnet where the ASG instances will be launched"
-  type        = string
+variable "subnets" {
+  description = "List of subnet IDs where the ALB will be deployed."
+  type        = list(string)
 }
