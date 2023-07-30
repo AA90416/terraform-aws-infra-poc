@@ -55,7 +55,7 @@ module "alb" {
 #}
 
 module "s3" {
-  source       = "./modules/s3"
-  bucket_name  = var.bucket_name
-  lifecycle_rule = var.s3_lifecycle_rules
+  source          = "./modules/s3"
+  bucket_name     = var.bucket_name
+  s3_lifecycle_rules = var.s3_lifecycle_rules
 }
