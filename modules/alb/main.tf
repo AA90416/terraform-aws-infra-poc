@@ -53,7 +53,7 @@ resource "aws_security_group" "alb_sg" {
 
 resource "aws_alb" "alb" {
   name            = "my-alb"
-  security_groups = [aws_security_group.alb_sg.id]
+  vpc_security_group_ids = [aws_security_group.alb_sg.id]
   subnets         =   var.subnets
   #subnets     = var.private_subnets
   load_balancer_type = "application"
