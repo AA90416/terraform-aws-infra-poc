@@ -57,5 +57,5 @@ module "alb" {
 module "s3" {
   source          = "./modules/s3"
   bucket_name     = var.bucket_name
-  s3_lifecycle_rules = var.s3_lifecycle_rules
+#  s3_lifecycle_rules = var.s3_lifecycle_rules
 }
