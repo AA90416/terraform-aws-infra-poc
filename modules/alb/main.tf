@@ -28,8 +28,9 @@ resource "aws_security_group" "alb_sg" {
     to_port     = 22
     protocol    = "tcp"
     // Allow traffic from specific IP ranges that need SSH access
-    cidr_blocks = ["YOUR_PUBLIC_IP/32"]  # Replace with your public IP address
+    cidr_blocks = ["0.0.0.0/0"] #["YOUR_PUBLIC_IP/32"]  # Replace with your public IP address
   }
+
   // Egress rule to allow any outbound traffic
   egress {
     description = "Allow all outbound traffic"
