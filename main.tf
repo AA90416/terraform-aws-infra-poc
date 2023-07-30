@@ -33,7 +33,7 @@ module "asg" {
   min_instance    = var.min_instance
   max_instance    = var.max_instance
   key_name        = var.key_name 
-  instance_count    = module.instance_count
+  instance_count    = module.asg.instance_count
 }
 
 
