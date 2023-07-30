@@ -4,6 +4,16 @@ module "vpc" {
   az_count = var.az_count
 }
 
+# Define the data source to get the availability zones in the selected region
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+# Define the EIP resource for the NAT gateways
+resource "aws_eip" "nat" {
+  count = var.az_count
+}
+
 module "bastion" {
   source        = "./modules/bastion"
   subnet_id     = module.vpc.public_subnets[1]
