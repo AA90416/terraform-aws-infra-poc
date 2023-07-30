@@ -39,10 +39,9 @@ resource "aws_instance" "asg" {
   # Other instance configuration as needed
 }
 
-
 resource "aws_alb_target_group_attachment" "asg_attachment" {
-  count      = var.instance_count  # Use the instance_count variable here
-  target_group_arn = aws_alb_target_group.alb_target_group.arn
+  count            = var.instance_count
+  target_group_arn = aws_alb_target_group.asg_target_group.arn
   target_id        = aws_instance.asg[count.index].id
   port             = 80
 }
