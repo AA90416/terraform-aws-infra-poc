@@ -81,7 +81,6 @@ resource "aws_route_table" "private" {
 
 resource "aws_route" "nat_gateway" {
   count = var.az_count
-
   route_table_id         = aws_route_table.private.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.nat[count.index].id
@@ -89,7 +88,6 @@ resource "aws_route" "nat_gateway" {
 
 resource "aws_route_table_association" "private" {
   count = var.az_count
-
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = aws_route_table.private.id
 }
