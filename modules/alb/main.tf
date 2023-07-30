@@ -19,7 +19,7 @@ resource "aws_security_group" "alb_sg" {
     protocol    = "tcp"
     // Allow traffic from ALB security group or specific IP ranges
     security_groups = [aws_security_group.alb_sg.id]
-  }
+  } 
 
   // Ingress rule for SSH (port 22)
   ingress {
@@ -29,6 +29,14 @@ resource "aws_security_group" "alb_sg" {
     protocol    = "tcp"
     // Allow traffic from specific IP ranges that need SSH access
     cidr_blocks = ["YOUR_PUBLIC_IP/32"]  # Replace with your public IP address
+  }
+  // Egress rule to allow any outbound traffic
+  egress {
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
