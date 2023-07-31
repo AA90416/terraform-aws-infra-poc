@@ -47,9 +47,6 @@ variable "max_instance" {
   type        = number
 }
 
-variable "vpc_id" {
-  description = "The ID of the VPC"
-}
 
 variable "subnet_ids" {
   description = "List of subnet IDs where ASG instances will be launched"
