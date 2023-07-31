@@ -6,6 +6,11 @@ output "instance_count" {
   value = var.instance_count
 }
 
+output "autoscaling_group_name" {
+  value = aws_autoscaling_group.asg.name
+}
+
+
 #output "asg_instance_ids" {
 #  value = aws_autoscaling_group.my_asg.*.instances[*].id
 #}
