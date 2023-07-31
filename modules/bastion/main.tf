@@ -10,8 +10,7 @@ resource "aws_instance" "bastion" {
   }
 }
 
-#resource "aws_security_group" "http_ssh" {
-#  name_prefix = "http-ssh-sg-"
+
 resource "aws_security_group" "bastion" {
   name_prefix = "bastion-sg-"
   vpc_id      = var.vpc_id
