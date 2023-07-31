@@ -11,7 +11,11 @@ Proof-of-concept environment in AWS using Terraform to manage infrastructure via
    - Sub1 – 10.1.0.0/24 (accessible from the internet)
    - Sub2 – 10.1.1.0/24 (accessible from the internet)
    - Sub3 – 10.1.2.0/24 (not accessible from the internet)
-   - Sub4 – 10.1.3.0/24 (not accessible from the internet)
+   - Sub4 – 10.1.3.0/24 (not accessible from the internet.
+ 
+### NAT Gateway Configuration
+
+- Configures two NAT gateways in AWS for two public subnets, facilitating ssh access to the webservers from bastion host.
 
 ### EC2 Instance
 - 1 EC2 instance running Red Hat Linux 9.2 in subnet Sub2
