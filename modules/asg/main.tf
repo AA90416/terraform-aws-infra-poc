@@ -23,19 +23,16 @@ resource "aws_launch_configuration" "asg_lc" {
   instance_type = var.instance_type
   key_name      = var.key_name
   user_data = <<-EOF
-              #!/bin/bash
-              sudo apt update
-              sudo apt install -y apache2
-              sudo systemctl enable apache2
-              sudo systemctl start apache2
-              EOF
+  #!/bin/bash
+  sudo apt update
+  sudo apt install -y apache2
+  sudo systemctl enable apache2
+  sudo systemctl start apache2
+  EOF
   security_groups = [aws_security_group.asg_sg.id] # Associate the security group with the instances
 }
 
-resource "aws_autoscaling_attachment" "alb_attachment" {
-  autoscaling_group_name = module.asg.this_autoscaling_group_name
-  alb_target_group_arn   = aws_alb_target_group.asg_target_group.arn
-}
+
   #user_data = <<-EOF
   #            #!/bin/bash
   #            sudo yum update -y
