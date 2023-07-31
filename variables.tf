@@ -3,12 +3,13 @@ variable "ami"{
  type = string
   default = "ami-010aff33ed5991201"
 }
-variable "keyname"{
+variable "key_name"{
+  type = string
   default = "MY-TEMP-PVT-INSTANCE"
 }
-variable "region" {
+variable "aws_region" {
   type        = string
-  default     = "ap-south-1"
+  default     = "us-east-1"
   description = "default region"
 }
 

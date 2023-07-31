@@ -248,7 +248,7 @@ resource "aws_launch_configuration" "webserver-launch-config" {
   name_prefix   = "webserver-launch-config"
   image_id      =  var.ami
   instance_type = "t2.micro"
-  key_name	= var.keyname
+  key_name	= var.key_name
   security_groups = ["${aws_security_group.webserver_sg.id}"]
   
   root_block_device {
@@ -349,7 +349,7 @@ module "bastion" {
   instance_type = var.bastion_instance_type
 #  storage_size  = var.bastion_storage_size
   key_name      = var.key_name 
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = aws_vpc.main.id
 }
 
 
