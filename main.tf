@@ -339,6 +339,9 @@ resource "aws_lb_listener" "front_end" {
   }
 }
 
+data "aws_lb" "ALB" {
+  name = aws_lb.ALB-tf.name
+}
 
 
 
