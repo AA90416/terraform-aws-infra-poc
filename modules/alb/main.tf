@@ -107,6 +107,7 @@ resource "aws_launch_configuration" "asg_lc" {
               sudo apt install -y apache2
               sudo systemctl enable apache2
               sudo systemctl start apache2
+              echo "Script executed successfully" > /var/log/user-data.log
               EOF
   security_groups = [aws_security_group.asg_sg.id] # Associate the security group with the instances
 }
