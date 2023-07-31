@@ -9,3 +9,7 @@ output "alb_security_group_id" {
 output "asg_target_group_arn" {
   value = aws_alb_target_group.asg_target_group.arn
 }
+
+output "alb_arn" {
+  value = aws_alb.alb.arn
+}
