@@ -43,9 +43,6 @@ module "alb" {
   vpc_id            = module.vpc.vpc_id
   subnets           = module.vpc.private_subnets
   security_group_ids = [module.bastion.security_group_id]
-  # Attach the ALB to the ASG using the ASG module output
-  # Use depends_on to ensure the ALB is created after the ASG
-  depends_on = [module.asg]
 }
 
 
