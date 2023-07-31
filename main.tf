@@ -247,7 +247,7 @@ egress {
 resource "aws_launch_configuration" "webserver-launch-config" {
   name_prefix   = "webserver-launch-config"
   image_id      =  var.ami
-  instance_type = var.instance_type #"t2.micro"
+  instance_type = var.instance_type 
   key_name	= var.key_name
   security_groups = [aws_security_group.webserver_sg.id]
   
@@ -347,7 +347,6 @@ module "bastion" {
   subnet_id     = aws_subnet.pub_sub1.id
   ami           = var.bastion_ami
   instance_type = var.bastion_instance_type
-#  storage_size  = var.bastion_storage_size
   key_name      = var.key_name 
   vpc_id      = aws_vpc.main.id
 }
