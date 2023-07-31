@@ -58,7 +58,7 @@ Clean Up: To remove the created infrastructure, run terraform destroy -var aws_r
 With this Terraform code, the AWS Proof-of-Concept Environment will be set up and ready for use. The environment includes a VPC, EC2 instances, Auto Scaling, Application Load Balancer, and an S3 bucket with lifecycle policies, all managed and configured automatically by Terraform.
 
 ## User Data script init_webserver.sh
-In the Terraform EC2 instance resource block for both the bastion and web server instances, we provide user data to execute script-based configurations. The user data scripts perform the following tasks:
+In the Terraform EC2 instance resource block for the bastion web server instances, we provide user data to execute script-based configurations. The user data scripts perform the following tasks:
 
 - Update the system packages
 - Install Apache HTTP server (httpd)
@@ -74,13 +74,12 @@ Please make sure to add the correct user data scripts in the respective Terrafor
 
 ## How to Use the Terraform Code
 1. Clone this repository to your local machine.
-2. Navigate to the terraform/ directory.
-3. Modify the variables in the `terraform.tfvars` file to suit your requirements.
-4. Make the userdata.sh files executable using chmod +x userdata.sh before using them in Terraform.
-5. chmod +x init_webserver.sh to set as executable.
-6. Run `terraform init` to initialize the Terraform environment.
-7. Run `terraform plan -var-file="terraform.tfvars"` to preview the changes that will be applied.
-8. Run `terraform apply -var-file="terraform.tfvars"` to create the AWS environment.
+3. Navigate to the terraform/ directory. 
+4. Modify the variables in the `terraform.tfvars` file to suit your requirements.
+5. Make the userdata.sh files executable using chmod +x init_webserver.sh before using the script in Terraform.
+7. Run `terraform init` to initialize the Terraform environment.
+8. Run `terraform plan -var-file="terraform.tfvars"` to preview the changes that will be applied.
+9. Run `terraform apply -var-file="terraform.tfvars"` to create the AWS environment.
 
 ## Clean Up
 To remove the created infrastructure, run:  terraform destroy -var-file="terraform.tfvars
