@@ -39,7 +39,8 @@ Proof-of-concept environment in AWS using Terraform to manage infrastructure via
 
 
 ### How the Code Works
-#### VPC and Subnets (modules/vpc/main.tf): The Terraform code defines a VPC (Virtual Private Cloud) with a specified CIDR block (10.1.0.0/16). It creates four subnets across two availability zones: Sub1, Sub2, Sub3, and Sub4. Subnets Sub1 and Sub2 are public, accessible from the internet, while Sub3 and Sub4 are private, not accessible from the internet.
+#### VPC and Subnets (modules/vpc/main.tf): 
+- The Terraform code defines a VPC (Virtual Private Cloud) with a specified CIDR block (10.1.0.0/16). It creates four subnets across two availability zones: Sub1, Sub2, Sub3, and Sub4. Subnets Sub1 and Sub2 are public, accessible from the internet, while Sub3 and Sub4 are private, not accessible from the internet.
 
 #### EC2 Instance (modules/webserver/main.tf): The code provisions an EC2 instance running Red Hat Linux in Subnet Sub2 (public). It uses the t2.micro instance type with a 20GB storage volume.
 
