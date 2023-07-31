@@ -249,7 +249,7 @@ resource "aws_launch_configuration" "webserver-launch-config" {
   image_id      =  var.ami
   instance_type = "t2.micro"
   key_name	= var.key_name
-  security_groups = ["${aws_security_group.webserver_sg.id}"]
+  security_groups = [aws_security_group.webserver_sg.id]
   
   root_block_device {
             volume_type = "gp2"
@@ -268,7 +268,7 @@ resource "aws_launch_configuration" "webserver-launch-config" {
   lifecycle {
     create_before_destroy = true
   }
-  user_data = filebase64("${path.module}/init_webserver.sh")
+  user_data = filebase64(path.module}/init_webserver.sh)
 }
 
 
@@ -279,7 +279,7 @@ resource "aws_autoscaling_group" "Demo-ASG-tf" {
   max_size           = 2
   min_size           = 1
   force_delete       = true
-  depends_on 	     = ["aws_lb.ALB-tf"]
+  depends_on 	     = [aws_lb.ALB-tf]
   target_group_arns  =  ["${aws_lb_target_group.TG-tf.arn}"]
   health_check_type  = "EC2"
   launch_configuration = aws_launch_configuration.webserver-launch-config.name

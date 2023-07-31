@@ -1,7 +1,7 @@
 # terraform.tfvars
 #allowed_ssh_ip = ["24.206.91.93/24"]
-region="us-east-1"
-vpc_cidr="10.1.0.0/16"
+aws_region = "us-east-1"
+vpc_cidr = "10.1.0.0/16"
 bastion_ami = "ami-053b0d53c279acc90"
 bastion_instance_type = "t2.micro"
 bastion_storage_size = 20
