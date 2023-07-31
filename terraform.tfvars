@@ -2,7 +2,7 @@
 #allowed_ssh_ip = ["24.206.91.93/24"]
 aws_region = "us-east-1"
 vpc_cidr = "10.1.0.0/16"
-bastion_ami = "ami-026b4881c8bdd93ed"
+bastion_ami = "ami-026ebd4cfe2c043b2"
 bastion_instance_type = "t2.micro"
 instance_type  = "t2.micro"
 bastion_storage_size = 20
@@ -12,4 +12,4 @@ backend_region          = "us-east-1"                   # Replace with your desi
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 bucket_name = "aws-terraform-poc-12234558373"
 key_name = "poc-test"
-ami = "ami-026b4881c8bdd93ed"
+ami = "ami-026ebd4cfe2c043b2"
