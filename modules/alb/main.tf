@@ -56,7 +56,6 @@ resource "aws_alb" "alb" {
   subnets         =   var.subnets
   #subnets     = var.private_subnets
   load_balancer_type = "application"
-  depends_on = [aws_autoscaling_attachment.alb_attachment]
   tags = {
     Name = "ALB"
   }
