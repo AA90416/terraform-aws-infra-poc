@@ -41,7 +41,8 @@ module "asg" {
 module "alb" {
   source            = "./modules/alb"
   vpc_id            = module.vpc.vpc_id
-  subnets           = module.vpc.private_subnets
+ # subnets           = module.vpc.private_subnets
+  subnets           = module.vpc.public_subnets
   security_group_ids = [module.bastion.security_group_id]
 }
 
