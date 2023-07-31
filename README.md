@@ -49,10 +49,13 @@ Proof-of-concept environment in AWS using Terraform to manage infrastructure via
 ### Auto Scaling Group: 
 - An Auto Scaling Group (ASG) is created to manage the number of EC2 instances. The ASG spans Subnets Sub3 and Sub4 (private subnets). It maintains the desired number of instances between a minimum of 2 and a maximum of 6 t2.micro instances.
 
+### Bastion Host:
+- A Bastion Host is created on Sub2 (public subnet) it allows SSH access into the instances thru a nat gateway.
+
 ### User Data: 
 - In the Terraform EC2 instance resource blocks for the web server instances, user data script are provided. These script is executed when the instances are launched and perform initial configurations. Specifically, the scripts update the system packages, install the Apache HTTP server (httpd), enable and start the httpd service, and configure firewall rules to allow the necessary traffic.
 
-### Application Load Balancer (ALB): 
+### Application Load Balancer: 
 - An Application Load Balancer is created, listening on TCP port 80 (HTTP). The ALB forwards incoming traffic to the instances in Subnets Sub3 and Sub4 managed by the ASG. Security groups are used to allow necessary traffic.
 
 ### S3 Bucket with Lifecycle Policies (modules/s3_bucket/main.tf): 
