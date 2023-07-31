@@ -24,9 +24,26 @@ module "bastion" {
   vpc_id      = module.vpc.vpc_id
 }
 
-module "asg" {
-  source          = "./modules/asg"
-  vpc_id          = module.vpc.vpc_id
+#module "asg" {
+#  source          = "./modules/asg"
+#  vpc_id          = module.vpc.vpc_id
+#  subnet_ids     = module.vpc.private_subnets
+#  ami             = var.ami
+#  instance_type   = var.instance_type
+#  storage_size    = var.storage_size
+#  min_instance    = var.min_instance
+#  max_instance    = var.max_instance
+#  key_name        = var.key_name 
+#  instance_count    = var.instance_count
+#}
+
+
+module "alb" {
+  source            = "./modules/alb"
+  vpc_id            = module.vpc.vpc_id
+  subnets           = module.vpc.public_subnets
+  security_group_ids = [module.bastion.security_group_id]
+########asg config
   subnet_ids     = module.vpc.private_subnets
   ami             = var.ami
   instance_type   = var.instance_type
@@ -35,15 +52,6 @@ module "asg" {
   max_instance    = var.max_instance
   key_name        = var.key_name 
   instance_count    = var.instance_count
-}
-
-
-module "alb" {
-  source            = "./modules/alb"
-  vpc_id            = module.vpc.vpc_id
- # subnets           = module.vpc.private_subnets
-  subnets           = module.vpc.public_subnets
-  security_group_ids = [module.bastion.security_group_id]
 }
 
 
