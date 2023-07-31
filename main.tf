@@ -45,6 +45,17 @@ module "alb" {
   security_group_ids = [module.bastion.security_group_id]
 }
 
+resource "aws_autoscaling_group" "asg" {
+  # ... Other attributes ...
+
+  target_group_arns = [module.alb.alb_arn]
+}
+
+# Optional: Use the ASG name from the ASG module output
+resource "aws_lb_target_group_attachment" "asg_attachment" {
+  target_group_arn = module.alb.asg_target_group_arn
+  target_id        = module.asg.autoscaling_group_name
+}
 
 #module "alb" {
 #  source        = "./modules/alb"
