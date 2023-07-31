@@ -344,7 +344,7 @@ resource "aws_lb_listener" "front_end" {
 
 module "bastion" {
   source        = "./modules/bastion"
-  subnet_id     = aws_subnet.pub_sub1.id
+  subnet_id     = aws_subnet.pub_sub2.id
   ami           = var.bastion_ami
   instance_type = var.bastion_instance_type
   key_name      = var.key_name 
