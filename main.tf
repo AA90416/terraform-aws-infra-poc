@@ -44,7 +44,8 @@ module "alb" {
   subnets           = module.vpc.private_subnets
   security_group_ids = [module.bastion.security_group_id]
   # Attach the ALB to the ASG using the ASG module output
-  autoscaling_group_name = module.asg.autoscaling_group_name
+  # Use depends_on to ensure the ALB is created after the ASG
+  depends_on = [module.asg]
 }
 
 
