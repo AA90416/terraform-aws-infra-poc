@@ -10,5 +10,7 @@ backend_key             = "terraform.tfstate"           # Replace with a desired
 backend_region          = "us-east-1"                   # Replace with your desired AWS region
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 bucket_name = "aws-terraform-poc-12234558373"
+## Pem key created in AWS to access the bastion host.
 key_name = "poc-test"
+## AWS ami image id for the Webservers.
 ami = "ami-026ebd4cfe2c043b2"
