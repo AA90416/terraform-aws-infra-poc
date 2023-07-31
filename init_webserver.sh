@@ -29,7 +29,7 @@ echo '<title>AWS Proof-of-Concept Environment with Terraform</title>' >> index.h
 echo '<meta charset="UTF-8">' >> index.html
 echo '</head>' >> index.html
 echo '<body>' >> index.html
-echo '<h1>Welcome to Level Up in Tech</h1>' >> index.html
-echo '<h3>Red Team</h3>' >> index.html
+echo '<h1>AWS Proof-of-Concept Environment with Terraform</h1>' >> index.html
+echo '<h3>AWS Technical Challenge</h3>' >> index.html
 echo '</body>' >> index.html
 echo '</html>' >> index.html
