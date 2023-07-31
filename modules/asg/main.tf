@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size             = var.max_instance
   desired_capacity     = var.instance_count
   vpc_zone_identifier  = var.subnet_ids
-
+  target_group_arns   = [aws_alb_target_group.asg_target_group.arn]
   tag {
     key                 = "Name"
     value               = "ASGInstance"
