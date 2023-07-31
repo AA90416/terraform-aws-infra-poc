@@ -14,7 +14,7 @@ Proof-of-concept environment in AWS using Terraform to manage infrastructure via
    - Sub4 – 10.1.3.0/24 (not accessible from the internet)
 
 ### EC2 Instance
-- 1 EC2 instance running Red Hat Linux in subnet Sub2
+- 1 EC2 instance running Red Hat Linux 9.2 in subnet Sub2
 - Configuration:
   - Instance Type: t2.micro
   - Storage: 20 GB
@@ -22,6 +22,7 @@ Proof-of-concept environment in AWS using Terraform to manage infrastructure via
 ### Auto Scaling Group (ASG)
 - 1 Auto Scaling Group that spreads instances across subnets Sub3 and Sub4
 - Configuration:
+  - Ami: Red Hat Linux 9.2
   - Instance Type: t2.micro
   - Storage: 20 GB
   - Number of Instances: Minimum 2, Maximum 6
