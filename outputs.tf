@@ -8,9 +8,7 @@ output "s3_bucket_arn" {
 }
 
 
-#output "alb_security_group_id" {
-#  value = aws_security_group.alb_sg.id
-#}
-#output "alb_dns_name" {
-#  value = module.alb.dns_name
-#}
+# Output the ALB DNS name
+output "load_balancer_dns" {
+  value = data.aws_lb.ALB.dns_name
+}
