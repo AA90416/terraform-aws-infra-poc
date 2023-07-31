@@ -344,6 +344,7 @@ data "aws_lb" "ALB" {
 }
 
 
+# Creates a bastion host on subnet 2
 
 module "bastion" {
   source        = "./modules/bastion"
@@ -355,13 +356,7 @@ module "bastion" {
 }
 
 
-
-#module "alb" {
-#  source        = "./modules/alb"
-#  vpc_id        = module.vpc.vpc_id
-#  subnets       = module.vpc.private_subnets
-#  security_group_ids = [module.bastion.security_group_id]
-#}
+# Creates and S3 bucket with lifecycle files and folders Images, Logs.
 
 module "s3" {
   source          = "./modules/s3"
