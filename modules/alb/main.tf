@@ -88,6 +88,32 @@ resource "aws_security_group" "asg_sg" {
   vpc_id      = var.vpc_id
 
   ingress {
+    description = "HTTP Access"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    // Allow traffic from ALB security group or specific IP ranges
+  }
+  // Ingress rule for HTTPS (port 443)
+  ingress {
+    description = "HTTPS Access"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    // Allow traffic from ALB security group or specific IP ranges
+  } 
+  // Ingress rule for SSH (port 22)
+  ingress {
+    description = "SSH Access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    // Allow traffic from specific IP ranges that need SSH access
+    cidr_blocks = ["0.0.0.0/0"] #["YOUR_PUBLIC_IP/32"]  # Replace with your public IP address
+  }
+  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
