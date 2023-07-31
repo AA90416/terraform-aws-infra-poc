@@ -268,7 +268,7 @@ resource "aws_launch_configuration" "webserver-launch-config" {
   lifecycle {
     create_before_destroy = true
   }
-  user_data = filebase64(path.module}/init_webserver.sh)
+  user_data = filebase64("${path.module}/init_webserver.sh")
 }
 
 
@@ -296,7 +296,7 @@ resource "aws_autoscaling_group" "Demo-ASG-tf" {
 
 resource "aws_lb_target_group" "TG-tf" {
   name     = "Demo-TargetGroup-tf"
-  depends_on = ["aws_vpc.main"]
+  depends_on = [aws_vpc.main]
   port     = 80
   protocol = "HTTP"
   vpc_id   = "${aws_vpc.main.id}"
