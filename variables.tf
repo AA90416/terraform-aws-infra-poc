@@ -15,26 +15,26 @@ variable "aws_region" {
 
 variable "vpc_cidr" {
   type        = string
-  default     = "172.16.0.0/16"
+  default     = "10.1.0.0/16"
   description = "default vpc_cidr_block"
 }
 
 variable "pub_sub1_cidr_block"{
    type        = string
-   default     = "172.16.1.0/24"
+   default     = "10.1.0.0/24"
 }
 
 variable "pub_sub2_cidr_block"{
    type        = string
-   default     = "172.16.2.0/24"
+   default     = "10.1.1.0/24"
 }
 variable "prv_sub1_cidr_block"{
    type        = string
-   default     = "172.16.3.0/24"
+   default     = "10.1.2.0/24"
 }
 variable "prv_sub2_cidr_block"{
    type        = string
-   default     = "172.16.4.0/24"
+   default     = "10.1.3.0/24"
 }
 
 
