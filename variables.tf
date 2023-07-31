@@ -1,25 +1,70 @@
-variable "aws_region" {
-  description = "AWS region for resources"
+
+variable "ami"{
+ type = string
+  default = "ami-010aff33ed5991201"
+}
+variable "keyname"{
+  default = "MY-TEMP-PVT-INSTANCE"
+}
+variable "region" {
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
+  description = "default region"
 }
-
-variable "allowed_ssh_ip" {
-  description = "List of public IP addresses or ranges to allow SSH"
-  type        = list(string)
-  default     = ["your_public_ip_address_or_range"]
-}
-
 
 variable "vpc_cidr" {
-  description = "CIDR block for VPC"
   type        = string
+  default     = "172.16.0.0/16"
+  description = "default vpc_cidr_block"
 }
 
-variable "az_count" {
-  description = "Number of availability zones"
-  type        = number
-  default     = 2
+variable "pub_sub1_cidr_block"{
+   type        = string
+   default     = "172.16.1.0/24"
+}
+
+variable "pub_sub2_cidr_block"{
+   type        = string
+   default     = "172.16.2.0/24"
+}
+variable "prv_sub1_cidr_block"{
+   type        = string
+   default     = "172.16.3.0/24"
+}
+variable "prv_sub2_cidr_block"{
+   type        = string
+   default     = "172.16.4.0/24"
+}
+
+
+variable "sg_name"{
+ type = string
+ default = "alb_sg"
+}
+
+variable "sg_description"{
+ type = string
+ default = "SG for application load balancer"
+}
+
+variable "sg_tagname"{
+ type = string
+ default = "SG for ALB"
+}
+
+variable "sg_ws_name"{
+ type = string
+ default = "webserver_sg"
+}
+
+variable "sg_ws_description"{
+ type = string
+ default = "SG for web server"
+}
+
+variable "sg_ws_tagname"{
+ type = string
+ default = "SG for web"
 }
 
 variable "bastion_ami" {
@@ -37,51 +82,13 @@ variable "bastion_storage_size" {
   type        = number
 }
 
-variable "ami" {
-  description = "AMI ID for the Auto Scaling Group instances"
-  type        = string
-}
-
-variable "instance_count" {
-  type    = number
-  default = 2  # Set your desired default instance count here
-}
-
-variable "instance_type" {
-  description = "Instance type for Auto Scaling Group instances"
-  type        = string
-}
-
-variable "storage_size" {
-  description = "Storage size in GB for Auto Scaling Group instances"
-  type        = number
-}
-
-variable "min_instance" {
-  description = "Minimum number of instances for the ASG"
-  type        = number
-}
-
-variable "max_instance" {
-  description = "Maximum number of instances for the ASG"
-  type        = number
-}
 
 variable "bucket_name" {
   description = "Name of the S3 bucket"
   type        = string
 }
 
-#variable "s3_lifecycle_rules" {
-#  description = "List of S3 bucket lifecycle rules"
-#  type        = list(map(any))
-#}
 
-
-variable "key_name" {
-  description = "Name of the AWS Key Pair to be used for instances"
-  type        = string
-}
 
 variable "backend_bucket" {
   description = "Name of the S3 bucket to store Terraform state."
