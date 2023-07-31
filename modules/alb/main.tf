@@ -102,6 +102,7 @@ resource "aws_launch_configuration" "asg_lc" {
   key_name      = var.key_name
   user_data = <<-EOF
   #!/bin/bash
+  sudo apt upgrade -y
   sudo apt update
   sudo apt install -y apache2
   sudo systemctl enable apache2
