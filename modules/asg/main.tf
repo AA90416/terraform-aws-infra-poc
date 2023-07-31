@@ -32,6 +32,11 @@ resource "aws_launch_configuration" "asg_lc" {
   security_groups = [aws_security_group.asg_sg.id] # Associate the security group with the instances
 }
 
+resource "aws_autoscaling_attachment" "alb_attachment" {
+  autoscaling_group_name = aws_autoscaling_group.asg.name
+  alb_target_group_arn   = aws_alb_target_group.asg_target_group.arn
+}
+
 
   #user_data = <<-EOF
   #            #!/bin/bash
