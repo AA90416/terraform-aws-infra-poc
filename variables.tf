@@ -7,6 +7,13 @@ variable "key_name"{
   type = string
   default = "MY-TEMP-PVT-INSTANCE"
 }
+
+variable "instance_type" {
+  description = "The EC2 instance type to be used in the launch configuration."
+  type        = string
+  default     = "t2.micro"  # You can set a default value or leave it unset if you want to require explicit input.
+}
+
 variable "aws_region" {
   type        = string
   default     = "us-east-1"
