@@ -2,8 +2,8 @@
 #allowed_ssh_ip = ["24.206.91.93/24"]
 aws_region = "us-east-1"
 vpc_cidr = "10.1.0.0/16"
-bastion_ami = "ami-036fa07b9b890c4ab"
-bastion_instance_type = "t2.micro"
+bastion_ami = "ami-0fc522222ab74a244"
+bastion_instance_type = "t2.small"
 bastion_storage_size = 20
 backend_bucket          = "your-terraform-state-bucket"  # Replace with your unique S3 bucket name for storing Terraform state
 backend_key             = "terraform.tfstate"           # Replace with a desired name for the Terraform state file
@@ -11,4 +11,4 @@ backend_region          = "us-east-1"                   # Replace with your desi
 backend_dynamodb_table  = "terraform-lock"              # Replace with your desired name for the DynamoDB table (for state locking)
 bucket_name = "aws-terraform-poc-12234558373"
 key_name = "poc-test"
-ami = "ami-036fa07b9b890c4ab"
+ami = "ami-0fc522222ab74a244"
