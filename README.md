@@ -61,7 +61,11 @@ To remove the created infrastructure and resources, run `terraform destroy -var-
 - AWS IAM user credentials with sufficient permissions to create the infrastructure resources.
 
 ## Contact
-For any further clarifications or assistance, please feel free to reach out to the team at rotero82@gmail.com.
+
+If you have any questions or need further assistance, feel free to reach out to the project owner:
+
+- Name: Roberto Otero
+- Email: rotero82@gmail.com
 
 ## License
 This project is open-source and licensed under the [MIT License](LICENSE).
