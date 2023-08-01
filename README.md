@@ -1,4 +1,4 @@
-# AWS Proof-of-Concept Environment with Terraform
+# AWS Terraform POC Environment
 
 ![AWS Proof-of-Concept Environment](images/aws-proof-of-concept.jpg)
 
