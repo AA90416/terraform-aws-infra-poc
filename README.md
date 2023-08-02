@@ -46,12 +46,13 @@ This repository contains Terraform code that sets up a comprehensive proof-of-co
 ## How to Use the Terraform Code
 1. Clone this repository to your local machine.
 2. Install Terraform (version >= 0.12, < 0.14) if not already installed.
-3. Navigate to the `terraform/` directory.
-4. Modify the `terraform.tfvars` file to customize the settings based on your requirements.
-5. Ensure the `init_webserver.sh` script is executable using `chmod +x init_webserver.sh` before using it in Terraform.
-6. Run `terraform init` to initialize the Terraform environment.
-7. Run `terraform plan -var-file="terraform.tfvars"` to preview the changes that will be applied.
-8. Run `terraform apply -var-file="terraform.tfvars"` to create the AWS environment.
+3. AWS CLI install and instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+4. Navigate to the `terraform/` directory.
+5. Modify the `terraform.tfvars` file to customize the settings based on your requirements.
+6. Ensure the `init_webserver.sh` script is executable using `chmod +x init_webserver.sh` before using it in Terraform.
+7. Run `terraform init` to initialize the Terraform environment.
+8. Run `terraform plan -var-file="terraform.tfvars"` to preview the changes that will be applied.
+9. Run `terraform apply -var-file="terraform.tfvars"` to create the AWS environment.
 
 ## Clean Up
 To remove the created infrastructure and resources, run `terraform destroy -var-file="terraform.tfvars"`.
